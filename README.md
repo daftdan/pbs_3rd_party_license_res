@@ -3,11 +3,11 @@ Small scripts that query various license servers (FlexNet, LM-X, LSTC) and retur
 
 To configure PBS Professional / OpenPBS to handle software that has 'floating' network licenses controlled by services such as FLEXNet, Reprise, LM-X do this:
 
-use one of these scripts, customising as necessary, making sure it is executable, owned and only writable by the PBS server user (usually root)
+use one of these scripts, customising as necessary, making sure it is executable, owned and only writable by the PBS server user (usually root). Tell the PBS server to createa new resource.
 
 	qmgr -c "create resource lic_foo type=long"
 
-edit *$PBS_HOME/sched_priv/sched_config* to include the new resource name in the list of resources:
+Tell the PBS scheduler about the resource. Edit *$PBS_HOME/sched_priv/sched_config* to include the new resource name in the list of resources:
 
 	resources: "ncpus, aoe, …,lic_foo"
 
